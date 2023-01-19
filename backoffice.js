@@ -1,13 +1,34 @@
-const postProducts = () => {}
+let url = "https://striveschool-api.herokuapp.com/api/product/";
 
-fetch ('https://striveschool-api.herokuapp.com/api/product/', {
-    method: 'POST',
-    body: JSON.stringify(postProducts),
-    headers: new Headers({
-        'Content-Type': 'application/json',
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M5MzJiN2U3MzczODAwMTUzNzQzNzQiLCJpYXQiOjE2NzQxMzAxMDQsImV4cCI6MTY3NTMzOTcwNH0.Qq5T9vIdN9gihqqmoQbd1glvy73rmwHe2syWMMhQ14A"
-    })
-})
+
+const postProducts = async (product) => {
+
+    try {
+        let res = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(product),
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M5MzJiN2U3MzczODAwMTUzNzQzNzQiLCJpYXQiOjE2NzQxMzAxMDQsImV4cCI6MTY3NTMzOTcwNH0.Qq5T9vIdN9gihqqmoQbd1glvy73rmwHe2syWMMhQ14A"
+
+        },
+    });
+} catch (error) {
+    console.log(error);
+}
+};
+
+const submitProduct = () => {
+    let product = {
+    name: document.getElementById("name").value,
+    description: document.getElementById("description").value,
+    brand: document.getElementById("brand").value,
+    imageURL: document.getElementById("image-URL").value,
+    price: document.getElementById("price").value
+    };
+    postData(product);
+}
+
 
 // function submit () {
 //     const name = document.getElementById("name").value;
