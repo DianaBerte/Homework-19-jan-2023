@@ -1,4 +1,35 @@
-// const url = "https://striveschool-api.herokuapp.com/api/product/"
+const url = "https://striveschool-api.herokuapp.com/api/product/";
+
+window.onload = () => {
+    getData();
+};
+
+const getData = async () => {
+    try {
+    let res = await fetch(url, {
+        headers: {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M5MzJiN2U3MzczODAwMTUzNzQzNzQiLCJpYXQiOjE2NzQxMzAxMDQsImV4cCI6MTY3NTMzOTcwNH0.Qq5T9vIdN9gihqqmoQbd1glvy73rmwHe2syWMMhQ14A"
+        },
+    });
+    
+    if (res.ok){
+        let data = res.json()
+        console.log(data);
+
+    }
+} catch (error) {
+    console.log(error);
+}
+};
+
+const displayProducts = (products) => {
+    let container = document.getElementById("row");
+    
+    products.forEach(singleProduct => {
+        singleProduct.innerHTML += ``
+    });
+}
+
 
 // // const options = {
 // //     Headers: new Headers({
